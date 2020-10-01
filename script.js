@@ -7,6 +7,7 @@ let indicator = document.querySelector(".indicators");
 //declaring iteration state
 let index = 0;
 
+//next button function
 nextSlide = () => {
     if(index == slider.length-1 ){
         index = 0;
@@ -18,6 +19,8 @@ nextSlide = () => {
     resetTimer();
 }
 
+
+//previous button funtion
 prevSlide = () => {
     if (index == 0){
     index = slider.length-1;
@@ -29,6 +32,8 @@ prevSlide = () => {
     resetTimer();
 }
 
+
+//indicat current slide function
 indicateSlide = () => {
     for(let i = 0; i < slider.length; i++){
         const div = document.createElement("div");
@@ -43,6 +48,7 @@ indicateSlide = () => {
 
 indicateSlide();
 
+//add id to indicator function
 indicateChange = (element) => {
     index = element.id;
     changeSlide();
@@ -50,6 +56,7 @@ indicateChange = (element) => {
     resetTimer();
 }
 
+//indicate current slide on control function
 updateIndicators = () => {
     for (let i = 0; i < indicator.children.length; i++){
         indicator.children[i].classList.remove("active");
@@ -57,6 +64,8 @@ updateIndicators = () => {
     indicator.children[index].classList.add("active");
 }
 
+
+//change slide function
 changeSlide = () => {
     for(let i = 0; i < slider.length; i++){
         slider[i].classList.remove("active");
@@ -65,17 +74,21 @@ changeSlide = () => {
     
 }
 
+
+// autoplay slide function
 autoPlay = () => {
     nextSlide();
 }
 
+//reset slide timer when any slide is clicked
 resetTimer = () => {
     clearInterval(timer);
     timer =  setInterval(autoPlay, 5000);
 }
 
+//Declare timer
 let timer = setInterval(autoPlay, 5000);
 
-
+//event listerners to triger controls
 next.addEventListener('click', nextSlide);
 prev.addEventListener('click', prevSlide);
