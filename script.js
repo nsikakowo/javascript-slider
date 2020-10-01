@@ -1,3 +1,5 @@
+//Declaring varialbles 
+
 let slider = document.querySelector(".slider").children;
 let prev = document.querySelector(".left");
 let next = document.querySelector(".right");
